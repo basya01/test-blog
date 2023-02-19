@@ -1,8 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Main } from './pages/Main';
-import { News } from './pages/News';
-import { Profile } from './pages/Profile';
+import { Main, News, Profile } from './pages';
 
 const App = () => {
   return (
