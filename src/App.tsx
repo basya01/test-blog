@@ -1,11 +1,17 @@
-import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { useAppDispatch, useAppSelector } from './hooks/redux';
-import { fetchPosts, Status } from './store/slices/posts';
+import { Main } from './pages/Main';
+import { News } from './pages/News';
+import { Profile } from './pages/Profile';
 
 const App = () => {
   return (
     <div className="App">
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
     </div>
   );
 };
