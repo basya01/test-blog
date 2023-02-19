@@ -1,7 +1,5 @@
-import React from 'react';
+import { Trans } from 'react-i18next';
 
 export const Main = () => {
-  return (
-    <div>Main</div>
-  );
+  return <div><Trans ns={'main'}>about</Trans></div>;
 };
