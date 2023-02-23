@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { User } from '../../models/user';
+import { User } from '../../models';
 
 const initialState: User[] = [{
   login: 'admin',

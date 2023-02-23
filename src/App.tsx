@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Header, Alerts } from './components';
-import { Alert } from './models/alert';
+import { Alert } from './models';
 import { Main, News, Profile } from './pages';
 
 interface IAlertsContext {

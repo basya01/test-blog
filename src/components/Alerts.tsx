@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import React, { useContext } from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import { AlertsContext } from '../App';
-import { Alert as IAlert, Severity } from '../models/alert';
+import { Alert as IAlert, Severity } from '../models';
 
 interface AlertsProps {
   alerts: IAlert[];

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Post } from '../../models/post';
+import { Post } from '../../models';
 
 interface FetchPostsArgs {
   _start: number;
