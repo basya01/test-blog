@@ -28,7 +28,7 @@ export const Alerts: React.FC<AlertsProps> = ({ alerts }) => {
       const timeOutMemo = React.useMemo(
         () =>
           setTimeout(() => {
-            deleteAlert(_id);
+            // deleteAlert(_id);
           }, 5000),
         []
       );
@@ -66,7 +66,7 @@ export const Alerts: React.FC<AlertsProps> = ({ alerts }) => {
         display: 'flex',
         flexDirection: 'column',
         gap: 1,
-        zIndex: 1000,
+        zIndex: 10000,
       }}
       component={TransitionGroup}
     >
