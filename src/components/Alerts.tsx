@@ -1,14 +1,12 @@
-import React, { useContext, useEffect } from 'react';
-import Slide from '@mui/material/Slide';
+import CloseIcon from '@mui/icons-material/Close';
+import { Collapse } from '@mui/material';
+import Alert, { AlertProps } from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import React, { useContext } from 'react';
 import { TransitionGroup } from 'react-transition-group';
-import { Alert as IAlert, Severity } from '../models/alert';
 import { AlertsContext } from '../App';
-import Alert, { AlertProps } from '@mui/material/Alert';
-import Fade from '@mui/material/Fade';
-import { Collapse } from '@mui/material';
+import { Alert as IAlert, Severity } from '../models/alert';
 
 interface AlertsProps {
   alerts: IAlert[];
@@ -28,7 +26,7 @@ export const Alerts: React.FC<AlertsProps> = ({ alerts }) => {
       const timeOutMemo = React.useMemo(
         () =>
           setTimeout(() => {
-            // deleteAlert(_id);
+            deleteAlert(_id);
           }, 5000),
         []
       );
