@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import React, { useCallback, useState } from 'react';
 import { Provider } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -41,11 +42,13 @@ const App = () => {
     <AlertsContext.Provider value={{ alerts, addAlert, deleteAlert }}>
       <div className="App">
         <Header />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
+        <Container sx={{ mt: 6 }} maxWidth='xl'>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </Container>
         <Alerts alerts={alerts} />
       </div>
     </AlertsContext.Provider>
