@@ -1,9 +1,8 @@
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import { Box, Button, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useRef, useState } from 'react';
 import { Trans } from 'react-i18next';
-import { Post } from '../components';
+import { Post, PostError } from '../components';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { clearPosts, fetchPosts, Status } from '../store/slices/posts';
 
@@ -26,7 +25,7 @@ export const News = () => {
   }, [start]);
 
   const onClickLoadMore = () => {
-    setStart((start) => start + limit);
+    setStart(start + limit);
   };
 
   const isMorePosts = posts.totalItems <= start;
@@ -41,19 +40,7 @@ export const News = () => {
           <Post key={item.id} id={item.id} title={item.title} body={item.body} />
         ))}
         {posts.status === Status.LOADING && <CircularProgress sx={{ mx: 'auto' }} />}
-        {posts.status === Status.ERROR && (
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Box display="flex" alignItems="center" gap={0.5}>
-              <ErrorOutlineIcon fontSize="large" />
-              <Typography variant="h4" component="h4">
-                <Trans ns="news">error</Trans>
-              </Typography>
-            </Box>
-            <Typography variant="subtitle1" component="p">
-              <Trans ns="news">errorMessage</Trans>
-            </Typography>
-          </Box>
-        )}
+        {posts.status === Status.ERROR && <PostError />}
       </Box>
       {isMorePosts && (
         <Typography variant="body1" component="p" mt={1}>
