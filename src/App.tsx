@@ -1,15 +1,14 @@
 import { Container } from '@mui/material';
-import React, { useCallback, useState } from 'react';
-import { Provider } from 'react-redux';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Header, Alerts } from './components';
-import { Alert } from './models';
+import { Alerts, Header } from './components';
+import { Alert, Severity } from './models';
 import { Main, News, Profile } from './pages';
 
 interface IAlertsContext {
   alerts: Alert[];
-  addAlert: (alert: Alert) => void;
+  addAlert: (alert: {text: string, severity: Severity}) => void;
   deleteAlert: (id: number) => void;
 }
 
@@ -30,8 +29,8 @@ const App = () => {
   //   }, 3000);
   // };
 
-  const addAlert = (alert: Alert) => {
-    setAlerts((prev) => [...prev, alert]);
+  const addAlert = (alert: {text: string, severity: Severity}) => {
+    setAlerts((prev) => [...prev, {...alert, id: Date.now()}]);
   };
 
   const deleteAlert = (id: number) => {
@@ -42,7 +41,7 @@ const App = () => {
     <AlertsContext.Provider value={{ alerts, addAlert, deleteAlert }}>
       <div className="App">
         <Header />
-        <Container sx={{ mt: 6 }} maxWidth='xl'>
+        <Container sx={{ my: 6 }} maxWidth='xl'>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/news" element={<News />} />

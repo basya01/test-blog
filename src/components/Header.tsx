@@ -10,7 +10,6 @@ import { AlertsContext } from '../App';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { login } from '../store/slices/auth';
 import { AuthModal } from './';
-import { Alerts } from './Alerts';
 
 const theme = createTheme({
   palette: {
@@ -57,12 +56,11 @@ export const Header = () => {
 
     const authUser = users.find((user) => user.password === target.password.value);
     if (!authUser) {
-      addAlert({ id: Date.now(), severity: 'error', text: 'You entered incorrect login or password' });
+      addAlert({ severity: 'error', text: 'You entered incorrect login or password' });
       return;
     }
     dispatch(login(authUser.id));
-    addAlert({ id: 1, severity: 'success', text: 'You are logged in' }),
-    setIsOpenAuthModal(false);
+    addAlert({ severity: 'success', text: 'You are logged in' }), setIsOpenAuthModal(false);
   };
 
   const onClickLogin = () => {
@@ -77,7 +75,7 @@ export const Header = () => {
     <ThemeProvider theme={theme}>
       <AppBar color="secondary" position="static">
         <Container maxWidth="xl">
-          <Toolbar disableGutters variant="dense">
+          <Toolbar variant="dense" disableGutters>
             <BookIcon color="primary" sx={{ mr: 1 }} />
             <Typography
               variant="h6"

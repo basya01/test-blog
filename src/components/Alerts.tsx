@@ -56,7 +56,7 @@ export const Alerts: React.FC<AlertsProps> = ({ alerts }) => {
   return (
     <Box
       sx={{
-        position: 'absolute',
+        position: 'fixed',
         left: '50%',
         transform: 'translateX(-50%)',
         bottom: 20,
