@@ -1,0 +1,83 @@
+[33mcommit 1acec285ca223bb743dda438f087d15214724db4[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Fri Feb 24 14:53:50 2023 +0200
+
+    add profile page
+
+[33mcommit bd480323f3eebd94d1f334486e8186741416e915[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Fri Feb 24 12:52:19 2023 +0200
+
+    add news page
+
+[33mcommit b57b91e1ab3956233f03c2b0fd49af383ec44f85[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Thu Feb 23 15:00:34 2023 +0200
+
+    move container to App component
+
+[33mcommit d5f8fc216677de92a15a8b505e97660a1a09ee3b[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Thu Feb 23 14:56:11 2023 +0200
+
+    add main page
+
+[33mcommit c49c731830c681bf2435e598bf7fe36bb4d78b33[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Thu Feb 23 14:27:23 2023 +0200
+
+    add re-exports for models
+
+[33mcommit f9a482231a5d82e523df04312fe8570822074212[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Thu Feb 23 14:20:18 2023 +0200
+
+    turn on delete alert in 5 sec
+
+[33mcommit 84b3cbd19ef25d6fecbe3973ce99f648d3f2047f[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Thu Feb 23 14:18:41 2023 +0200
+
+    fix alert display in authmodal
+
+[33mcommit 1406ca5a5511487c7e6a614f96bc0269ad214c7c[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Thu Feb 23 14:14:03 2023 +0200
+
+    add header and alerts
+
+[33mcommit f300d3fa2dc65e0e7fae5e3eb7746be5f70beb94[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Mon Feb 20 01:04:35 2023 +0200
+
+    fix translation
+
+[33mcommit 52382f12ff70f54cc3629b9e8115289ff2686929[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Mon Feb 20 01:01:33 2023 +0200
+
+    add locales
+
+[33mcommit ecbe9e443292a87a0b4c5831c610cd2c8184537e[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Sun Feb 19 18:44:20 2023 +0200
+
+    add re-export pages
+
+[33mcommit 42008300043bb7bd9e85ff06aa3df1cf6bc9a9d4[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Sun Feb 19 18:38:08 2023 +0200
+
+    add primary routing
+
+[33mcommit 5a2842b3567a571cf76ec543b17b8dd983022ce8[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Sun Feb 19 18:21:17 2023 +0200
+
+    add store, useAppSelector, useAppDispatch, posts slice
+
+[33mcommit 3b082dc1bc95fe54aff2f8387d87d1c13b9544e0[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Arsen <arsen.lulukyan@gmail.com>
+Date:   Sun Feb 19 15:19:01 2023 +0200
+
+    initial commit

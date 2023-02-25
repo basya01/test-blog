@@ -1,26 +1,11 @@
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import BookIcon from '@mui/icons-material/Book';
 import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from '@mui/material';
-import blue from '@mui/material/colors/blue';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Box, Container } from '@mui/system';
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AlertsContext } from '../App';
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { login } from '../store/slices/auth';
-import { AuthModal } from './';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: blue[500],
-    },
-    secondary: {
-      main: '#fff',
-    },
-  },
-});
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useAppSelector } from '../hooks/redux';
+import { useAuth } from '../hooks/useAuth';
+import { AuthModal, ProfileMenu } from './';
 
 const tabs = [
   {
@@ -39,9 +24,15 @@ export const Header = () => {
   const [activeTab, setActiveTab] = useState<number | false>(0);
   const [isOpenAuthModal, setIsOpenAuthModal] = useState(false);
   const userId = useAppSelector((state) => state.auth.id);
-  const users = useAppSelector((state) => state.users);
-  const dispatch = useAppDispatch();
-  const { addAlert } = useContext(AlertsContext);
+  const { pathname } = useLocation();
+  const auth = useAuth();
+
+  useEffect(() => {
+    const isTabExist = tabs.some((tab) => tab.to === pathname);
+    if(!isTabExist) {
+      setActiveTab(false);
+    }
+  }, [pathname]);
 
   const onChangeTabs = (event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
@@ -49,18 +40,12 @@ export const Header = () => {
 
   const onSubmitAuth = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const target = e.target as typeof e.target & {
+    const { login, password } = e.target as typeof e.target & {
       login: { value: string };
       password: { value: string };
     };
 
-    const authUser = users.find((user) => user.password === target.password.value);
-    if (!authUser) {
-      addAlert({ severity: 'error', text: 'You entered incorrect login or password' });
-      return;
-    }
-    dispatch(login(authUser.id));
-    addAlert({ severity: 'success', text: 'You are logged in' }), setIsOpenAuthModal(false);
+    auth(login.value, password.value) && setIsOpenAuthModal(false);
   };
 
   const onClickLogin = () => {
@@ -72,7 +57,7 @@ export const Header = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <AppBar color="secondary" position="static">
         <Container maxWidth="xl">
           <Toolbar variant="dense" disableGutters>
@@ -82,10 +67,10 @@ export const Header = () => {
               component="h1"
               sx={{
                 mr: 10,
-                color: blue[500],
                 fontWeight: 700,
                 letterSpacing: '.3rem',
               }}
+              color="primary"
             >
               BLOG
             </Typography>
@@ -101,11 +86,9 @@ export const Header = () => {
                 />
               ))}
             </Tabs>
-            <Box sx={{ ml: 'auto' }}>
+            <Box ml="auto">
               {userId !== null ? (
-                <Link to="/profile" onClick={() => setActiveTab(false)}>
-                  <AccountCircleIcon fontSize="large" color="primary" to="/profile" />
-                </Link>
+                <ProfileMenu />
               ) : (
                 <Button variant="contained" size="large" onClick={onClickLogin}>
                   Log in
@@ -116,6 +99,6 @@ export const Header = () => {
         </Container>
       </AppBar>
       <AuthModal open={isOpenAuthModal} onClose={onCloseAuthModal} onSubmit={onSubmitAuth} />
-    </ThemeProvider>
+    </>
   );
 };

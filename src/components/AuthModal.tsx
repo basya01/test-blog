@@ -36,7 +36,7 @@ export const AuthModal: FC<Props> = ({open, onClose, onSubmit}) => {
         </Typography>
         <Box sx={{ mt: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
           <TextField required variant="standard" label="Login" name="login" />
-          <TextField required variant="standard" label="Password" name="password" />
+          <TextField type='password' required variant="standard" label="Password" name="password" />
         </Box>
         <Button type="submit" sx={{ mt: 2 }} variant="contained">
           Send

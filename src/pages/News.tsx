@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Trans } from 'react-i18next';
 import { Post, PostError } from '../components';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
@@ -10,22 +10,20 @@ export const News = () => {
   const posts = useAppSelector((state) => state.posts);
   const dispatch = useAppDispatch();
   const [start, setStart] = useState(0);
-  const isFirstRender = useRef(true);
   const limit = 10;
 
   useEffect(() => {
-    if (start === 0) {
-      dispatch(fetchPosts({ _start: start, _limit: limit }));
-    } else {
-      isFirstRender.current && setStart(0);
-      dispatch(fetchPosts({ _start: start, _limit: limit }));
-    }
-    isFirstRender.current && dispatch(clearPosts());
-    isFirstRender.current = false;
-  }, [start]);
+    dispatch(fetchPosts({ _start: start, _limit: limit }));
+    setStart(start+limit);
+
+    return () => {
+      dispatch(clearPosts());
+    };
+  }, []);
 
   const onClickLoadMore = () => {
     setStart(start + limit);
+    dispatch(fetchPosts({ _start: start, _limit: limit }));
   };
 
   const isMorePosts = posts.totalItems <= start;
