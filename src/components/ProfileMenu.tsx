@@ -1,6 +1,7 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Box, Button, Menu, MenuItem } from '@mui/material';
-import React, { MouseEvent, useContext } from 'react';
+import React, { MouseEvent } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../hooks/redux';
 import { addAlert } from '../store/slices/alerts';
@@ -9,14 +10,15 @@ import { logout } from '../store/slices/auth';
 export const ProfileMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation('alerts');
 
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
   const handleLogout = () => {
     setAnchorEl(null);
-    dispatch(addAlert({text: 'You are logged out', severity: 'info'}));
+    dispatch(addAlert({ text: t('logoutInfo'), severity: 'info' }));
     dispatch(logout());
   };
 
@@ -31,10 +33,14 @@ export const ProfileMenu = () => {
       </Button>
       <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClick={handleClose}>
         <MenuItem onClick={handleClose}>
-          <Link to="/profile">My Profile</Link>
+          <Link to="/profile">
+            <Trans ns="navigation">profile</Trans>
+          </Link>
         </MenuItem>
         <MenuItem onClick={handleLogout}>
-          <Link to="/">Log Out</Link>
+          <Link to="/">
+            <Trans ns="navigation">logout</Trans>
+          </Link>
         </MenuItem>
       </Menu>
     </Box>

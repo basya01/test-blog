@@ -1,0 +1,6 @@
+{
+  "loginError": "You entered incorrect login or password.",
+  "loginSuccess": "You are logged in.",
+  "logoutInfo": "You are logged out.",
+  "deletePostError": "Failed to delete the post."
+}

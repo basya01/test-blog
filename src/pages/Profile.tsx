@@ -6,12 +6,11 @@ import { useAppSelector } from '../hooks/redux';
 
 export const Profile = () => {
   const userId = useAppSelector((state) => state.auth.id);
+  const user = useAppSelector((state) => state.users).find((item) => item.id === userId);
 
-  if (userId === null) {
+  if (!user) {
     return <Navigate to="/" />;
   }
-
-  const user = useAppSelector((state) => state.users).find((item) => item.id === userId);
 
   return (
     <>
@@ -27,18 +26,18 @@ export const Profile = () => {
           <Box component="ul" mt={5} display="flex" flexDirection="column" gap={2}>
             <li>
               <p>
-                <Trans ns="profile">age</Trans>: {user?.age || <Trans ns="profile">unk</Trans>}
+                <Trans ns="profile">age</Trans>: {user.age || <Trans ns="profile">unk</Trans>}
               </p>
             </li>
             <li>
               <p>
-                <Trans ns="profile">city</Trans>: {user?.city || <Trans ns="profile">unk</Trans>}
+                <Trans ns="profile">city</Trans>: {user.city || <Trans ns="profile">unk</Trans>}
               </p>
             </li>
             <li>
               <p>
                 <Trans ns="profile">hobbies</Trans>:{' '}
-                {user?.hobbies?.join(', ') || <Trans ns="profile">unk</Trans>}
+                {user.hobbies?.join(', ') || <Trans ns="profile">unk</Trans>}
               </p>
             </li>
           </Box>

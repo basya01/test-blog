@@ -1,11 +1,11 @@
 import { Box, Button, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Trans } from 'react-i18next';
 import { Post, PostError } from '../components';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { useFetchPosts } from '../hooks/useFetchPosts';
-import { clearPosts, fetchPosts, Status } from '../store/slices/posts';
+import { clearPosts, Status } from '../store/slices/posts';
 
 export const News = () => {
   const posts = useAppSelector((state) => state.posts);

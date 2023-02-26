@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { useAppDispatch } from '../hooks/redux';
 import { addAlert } from '../store/slices/alerts';
 import { deletePostById } from '../store/slices/posts';
@@ -17,6 +17,7 @@ interface PostProps {
 export const Post: React.FC<PostProps> = ({ id, title, body }) => {
   const [delLoading, setDelLoading] = useState(false);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation('alerts');
 
   const onDelete = async () => {
     const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -26,7 +27,7 @@ export const Post: React.FC<PostProps> = ({ id, title, body }) => {
       dispatch(deletePostById(id));
     } catch (e) {
       setDelLoading(false);
-      dispatch(addAlert({ severity: 'error', text: 'Failed to delete the post' }));
+      dispatch(addAlert({ severity: 'error', text: t('deletePostError') }));
       console.log(e);
     }
   };

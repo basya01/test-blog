@@ -2,23 +2,11 @@ import BookIcon from '@mui/icons-material/Book';
 import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../hooks/redux';
 import { useAuth } from '../hooks/useAuth';
 import { AuthModal, ProfileMenu } from './';
-
-const tabs = [
-  {
-    label: 'Home',
-    to: '/',
-    id: 0,
-  },
-  {
-    label: 'News',
-    to: '/news',
-    id: 1,
-  },
-];
 
 export const Header = () => {
   const [activeTab, setActiveTab] = useState<number | false>(0);
@@ -26,10 +14,24 @@ export const Header = () => {
   const userId = useAppSelector((state) => state.auth.id);
   const { pathname } = useLocation();
   const auth = useAuth();
+  const { t } = useTranslation('navigation');
+
+  const tabs = [
+    {
+      label: t('main'),
+      to: '/',
+      id: 0,
+    },
+    {
+      label: t('news'),
+      to: '/news',
+      id: 1,
+    },
+  ];
 
   useEffect(() => {
     const isTabExist = tabs.find((tab) => tab.to === pathname);
-    if(!isTabExist) {
+    if (!isTabExist) {
       setActiveTab(false);
       return;
     }

@@ -1,5 +1,6 @@
 {
   "main": "Main",
-  "profile": "Profile",
-  "news": "News"
+  "profile": "My Profile",
+  "news": "News",
+  "logout": "Log Out"
 }
