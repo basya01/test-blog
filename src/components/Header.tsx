@@ -28,15 +28,13 @@ export const Header = () => {
   const auth = useAuth();
 
   useEffect(() => {
-    const isTabExist = tabs.some((tab) => tab.to === pathname);
+    const isTabExist = tabs.find((tab) => tab.to === pathname);
     if(!isTabExist) {
       setActiveTab(false);
+      return;
     }
+    setActiveTab(isTabExist.id);
   }, [pathname]);
-
-  const onChangeTabs = (event: React.SyntheticEvent, newValue: number) => {
-    setActiveTab(newValue);
-  };
 
   const onSubmitAuth = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -74,7 +72,7 @@ export const Header = () => {
             >
               BLOG
             </Typography>
-            <Tabs value={activeTab} onChange={onChangeTabs} aria-label="basic tabs example">
+            <Tabs value={activeTab} aria-label="basic tabs example">
               {tabs.map((tab) => (
                 <Tab
                   key={tab.id}

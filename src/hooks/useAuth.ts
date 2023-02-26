@@ -1,8 +1,8 @@
-import { useAppDispatch, useAppSelector } from './redux';
-import { login as loginUser } from '../store/slices/auth';
 import { useContext } from 'react';
-import { AlertsContext } from '../App';
 import { useNavigate } from 'react-router-dom';
+import { AlertsContext } from '../App';
+import { login as loginUser } from '../store/slices/auth';
+import { useAppDispatch, useAppSelector } from './redux';
 
 export const useAuth = () => {
   const users = useAppSelector((state) => state.users);

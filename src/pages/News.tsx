@@ -4,17 +4,16 @@ import { useEffect, useState } from 'react';
 import { Trans } from 'react-i18next';
 import { Post, PostError } from '../components';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { useFetchPosts } from '../hooks/useFetchPosts';
 import { clearPosts, fetchPosts, Status } from '../store/slices/posts';
 
 export const News = () => {
   const posts = useAppSelector((state) => state.posts);
   const dispatch = useAppDispatch();
-  const [start, setStart] = useState(0);
-  const limit = 10;
+  const {start, loadMorePosts} = useFetchPosts(10);
 
   useEffect(() => {
-    dispatch(fetchPosts({ _start: start, _limit: limit }));
-    setStart(start+limit);
+    loadMorePosts();
 
     return () => {
       dispatch(clearPosts());
@@ -22,8 +21,7 @@ export const News = () => {
   }, []);
 
   const onClickLoadMore = () => {
-    setStart(start + limit);
-    dispatch(fetchPosts({ _start: start, _limit: limit }));
+    loadMorePosts();
   };
 
   const isMorePosts = posts.totalItems <= start;
