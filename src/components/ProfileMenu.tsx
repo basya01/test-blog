@@ -2,14 +2,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Box, Button, Menu, MenuItem } from '@mui/material';
 import React, { MouseEvent, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AlertsContext } from '../App';
 import { useAppDispatch } from '../hooks/redux';
+import { addAlert } from '../store/slices/alerts';
 import { logout } from '../store/slices/auth';
 
 export const ProfileMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const dispatch = useAppDispatch();
-  const {addAlert} = useContext(AlertsContext);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -17,7 +16,7 @@ export const ProfileMenu = () => {
   
   const handleLogout = () => {
     setAnchorEl(null);
-    addAlert({text: 'You are logged out', severity: 'info'})
+    dispatch(addAlert({text: 'You are logged out', severity: 'info'}));
     dispatch(logout());
   };
 

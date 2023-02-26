@@ -3,10 +3,11 @@ import { Collapse } from '@mui/material';
 import Alert, { AlertProps } from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import React, { useContext } from 'react';
+import React from 'react';
 import { TransitionGroup } from 'react-transition-group';
-import { AlertsContext } from '../App';
-import { Alert as IAlert, Severity } from '../models';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { Severity } from '../models';
+import { deleteAlert } from '../store/slices/alerts';
 
 interface TempAlertProps extends AlertProps {
   _id: number;
@@ -15,19 +16,19 @@ interface TempAlertProps extends AlertProps {
 }
 
 const TempAlert: React.FC<TempAlertProps> = React.forwardRef(({ _id, severity, children, ...props }, ref) => {
-  const { deleteAlert } = useContext(AlertsContext);
+  const dispatch = useAppDispatch();
 
   const timeOutMemo = React.useMemo(
     () =>
       setTimeout(() => {
-        deleteAlert(_id);
+        dispatch(deleteAlert(_id));
       }, 5000),
     []
   );
 
   const onCloseAlert = (id: number) => {
     clearInterval(timeOutMemo);
-    deleteAlert(id);
+    dispatch(deleteAlert(id));
   };
 
   return (
@@ -46,11 +47,10 @@ const TempAlert: React.FC<TempAlertProps> = React.forwardRef(({ _id, severity, c
   );
 });
 
-interface AlertsProps {
-  alerts: IAlert[];
-}
 
-export const Alerts: React.FC<AlertsProps> = ({ alerts }) => {
+export const Alerts = () => {
+  const alerts = useAppSelector(state => state.alerts.items);
+
   return (
     <Box
       sx={{

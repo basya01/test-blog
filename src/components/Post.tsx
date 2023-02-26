@@ -2,10 +2,10 @@ import { Box, Card, CircularProgress } from '@mui/material';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Trans } from 'react-i18next';
-import { AlertsContext } from '../App';
 import { useAppDispatch } from '../hooks/redux';
+import { addAlert } from '../store/slices/alerts';
 import { deletePostById } from '../store/slices/posts';
 
 interface PostProps {
@@ -17,7 +17,6 @@ interface PostProps {
 export const Post: React.FC<PostProps> = ({ id, title, body }) => {
   const [delLoading, setDelLoading] = useState(false);
   const dispatch = useAppDispatch();
-  const { addAlert } = useContext(AlertsContext);
 
   const onDelete = async () => {
     const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -27,7 +26,7 @@ export const Post: React.FC<PostProps> = ({ id, title, body }) => {
       dispatch(deletePostById(id));
     } catch (e) {
       setDelLoading(false);
-      addAlert({ severity: 'error', text: 'Failed to delete the post' });
+      dispatch(addAlert({ severity: 'error', text: 'Failed to delete the post' }));
       console.log(e);
     }
   };
