@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../hooks/redux';
 import { useAuth } from '../hooks/useAuth';
-import { AuthModal, ProfileMenu } from './';
+import { AuthModal, LngToggler, ProfileMenu } from './';
 
 export const Header = () => {
   const [activeTab, setActiveTab] = useState<number | false>(0);
@@ -86,7 +86,9 @@ export const Header = () => {
                 />
               ))}
             </Tabs>
-            <Box ml="auto">
+
+            <Box sx={{ml: 'auto', display: 'flex', gap: 4}}>
+              <LngToggler />
               {userId !== null ? (
                 <ProfileMenu />
               ) : (
