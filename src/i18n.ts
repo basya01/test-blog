@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { AlertsEN, MainEN, NavigationEN, NewsEN, ProfileEN } from './locales/en';
-import { AlertsUK, MainUK, NavigationUK, NewsUK, ProfileUK } from './locales/uk';
+import { AlertsEN, MainEN, NavigationEN, NewsEN, ProfileEN, AuthEN } from './locales/en';
+import { AlertsUK, MainUK, NavigationUK, NewsUK, ProfileUK, AuthUK } from './locales/uk';
 
 const resources = {
   en: {
@@ -10,6 +10,7 @@ const resources = {
     news: NewsEN,
     profile: ProfileEN,
     alerts: AlertsEN,
+    auth: AuthEN,
   },
   uk: {
     main: MainUK,
@@ -17,6 +18,7 @@ const resources = {
     news: NewsUK,
     profile: ProfileUK,
     alerts: AlertsUK,
+    auth: AuthUK,
   },
 };
 

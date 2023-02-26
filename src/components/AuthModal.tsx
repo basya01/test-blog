@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   open: boolean;
@@ -12,7 +13,9 @@ interface Props {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 }
 
-export const AuthModal: FC<Props> = ({open, onClose, onSubmit}) => {
+export const AuthModal: FC<Props> = ({ open, onClose, onSubmit }) => {
+  const { t } = useTranslation('auth');
+
   return (
     <Modal open={open} onClose={onClose} aria-labelledby="modal-modal-title">
       <Box
@@ -32,14 +35,14 @@ export const AuthModal: FC<Props> = ({open, onClose, onSubmit}) => {
         component="form"
       >
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          Authorization
+          {t('auth')}
         </Typography>
         <Box sx={{ mt: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
-          <TextField required variant="standard" label="Login" name="login" />
-          <TextField type='password' required variant="standard" label="Password" name="password" />
+          <TextField required variant="standard" label={t('login')} name="login" />
+          <TextField type="password" required variant="standard" label={t('pass')} name="password" />
         </Box>
         <Button type="submit" sx={{ mt: 2 }} variant="contained">
-          Send
+          {t('send')}
         </Button>
       </Box>
     </Modal>

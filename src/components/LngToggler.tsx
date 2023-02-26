@@ -1,5 +1,4 @@
 import { Button } from '@mui/material';
-import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import EngIcon from '../assets/english.svg';
 import UkIcon from '../assets/ukrainian.svg';
