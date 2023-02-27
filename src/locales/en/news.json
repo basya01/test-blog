@@ -1,0 +1,8 @@
+{
+  "news": "News",
+  "delete": "Delete",
+  "load": "Load more",
+  "error": "Error!",
+  "errorMessage": "Posts is not found",
+  "noPosts": "There aren't more posts"
+}
