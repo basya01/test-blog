@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 import { useTranslation, WithTranslation } from 'react-i18next';
 
-interface AuthModalProps extends WithTranslation {
+interface AuthModalProps {
   open: boolean;
   onClose: () => void;
   onSubmit: React.FormEventHandler<HTMLFormElement>;

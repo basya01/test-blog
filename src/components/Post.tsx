@@ -17,7 +17,7 @@ interface PostProps {
 export const Post: React.FC<PostProps> = ({ id, title, body }) => {
   const [delLoading, setDelLoading] = useState(false);
   const dispatch = useAppDispatch();
-  const { t } = useTranslation('alerts');
+  const { t } = useTranslation(['alerts', 'news']);
 
   const onDelete = async () => {
     const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -45,7 +45,7 @@ export const Post: React.FC<PostProps> = ({ id, title, body }) => {
       <Box display="flex" gap={2} alignItems="center">
         {delLoading && <CircularProgress color="error" size={30} />}
         <Button variant="contained" color="error" onClick={onDelete}>
-          {t('delete')}
+          {t('delete', { ns: 'news' })}
         </Button>
       </Box>
     </Card>

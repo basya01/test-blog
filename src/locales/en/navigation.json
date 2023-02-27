@@ -2,5 +2,6 @@
   "main": "Main",
   "profile": "My Profile",
   "news": "News",
-  "logout": "Log Out"
+  "logout": "Log Out",
+  "login": "Log In"
 }

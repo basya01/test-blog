@@ -87,13 +87,13 @@ export const Header = () => {
               ))}
             </Tabs>
 
-            <Box sx={{ml: 'auto', display: 'flex', gap: 4}}>
+            <Box sx={{ ml: 'auto', display: 'flex', gap: 4 }}>
               <LngToggler />
               {userId !== null ? (
                 <ProfileMenu />
               ) : (
                 <Button variant="contained" size="large" onClick={onClickLogin}>
-                  Log in
+                  {t('login')}
                 </Button>
               )}
             </Box>
