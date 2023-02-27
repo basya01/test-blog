@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '../hooks/redux';
 import { addAlert } from '../store/slices/alerts';
 import { deletePostById } from '../store/slices/posts';
@@ -45,7 +45,7 @@ export const Post: React.FC<PostProps> = ({ id, title, body }) => {
       <Box display="flex" gap={2} alignItems="center">
         {delLoading && <CircularProgress color="error" size={30} />}
         <Button variant="contained" color="error" onClick={onDelete}>
-          <Trans ns={'news'}>delete</Trans>
+          {t('delete')}
         </Button>
       </Box>
     </Card>

@@ -1,16 +1,16 @@
 import { Box, Button, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect } from 'react';
-import { Trans } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import { Post, PostError } from '../components';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { useFetchPosts } from '../hooks/useFetchPosts';
 import { clearPosts, Status } from '../store/slices/posts';
 
-export const News = () => {
+export const News = withTranslation('news')(({ t }) => {
   const posts = useAppSelector((state) => state.posts);
   const dispatch = useAppDispatch();
-  const {start, loadMorePosts} = useFetchPosts(10);
+  const { start, loadMorePosts } = useFetchPosts(10);
 
   useEffect(() => {
     loadMorePosts();
@@ -29,7 +29,7 @@ export const News = () => {
   return (
     <>
       <Typography variant="h4" component="h2">
-        <Trans ns="news">news</Trans>
+        {t('news')}
       </Typography>
       <Box mt={2} display="flex" flexDirection="column" gap={3}>
         {posts.items.map((item) => (
@@ -40,7 +40,7 @@ export const News = () => {
       </Box>
       {isMorePosts && (
         <Typography variant="body1" component="p" mt={1}>
-          <Trans ns="news">noPosts</Trans>
+          {t('noPosts')}
         </Typography>
       )}
       <Button
@@ -50,8 +50,8 @@ export const News = () => {
         variant="contained"
         onClick={onClickLoadMore}
       >
-        <Trans ns="news">load</Trans>
+        {t('load')}
       </Button>
     </>
   );
-};
+});

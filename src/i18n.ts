@@ -25,7 +25,11 @@ const resources = {
 i18n.use(initReactI18next).init({
   resources,
   lng: 'en',
-
+  react: {
+    bindI18n: 'loaded languageChanged',
+    bindI18nStore: 'added',
+    useSuspense: true,
+  },
   interpolation: {
     escapeValue: false,
   },

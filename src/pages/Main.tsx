@@ -1,14 +1,16 @@
-import { Container, Typography } from '@mui/material';
-import { Trans } from 'react-i18next';
+import { Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 export const Main = () => {
+  const { t } = useTranslation('main');
+
   return (
     <>
       <Typography variant="h4" component="h2">
-        <Trans ns={'main'}>about</Trans>
+        {t('about')}
       </Typography>
       <Typography variant="body1" component="p" maxWidth={650}>
-        <Trans ns={'main'}>aboutBody</Trans>
+        {t('aboutBody')}
       </Typography>
     </>
   );

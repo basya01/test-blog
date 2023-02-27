@@ -4,16 +4,16 @@ import blue from '@mui/material/colors/blue';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
+import { useTranslation, WithTranslation } from 'react-i18next';
 
-interface Props {
+interface AuthModalProps extends WithTranslation {
   open: boolean;
   onClose: () => void;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 }
 
-export const AuthModal: FC<Props> = ({ open, onClose, onSubmit }) => {
+export const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, onSubmit }) => {
   const { t } = useTranslation('auth');
 
   return (
