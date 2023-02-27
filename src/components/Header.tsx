@@ -76,8 +76,7 @@ export const Header = () => {
                 />
               ))}
             </Tabs>
-
-            <Box sx={{ ml: 'auto', display: 'flex', gap: 4 }}>
+            <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center', gap: 4 }}>
               <LngToggler />
               {userId !== null ? (
                 <ProfileMenu />
