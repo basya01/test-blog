@@ -14,6 +14,7 @@ export const LngToggler = () => {
 
   const languageHandler = (lng: Langs) => {
     i18n.changeLanguage(lng);
+    localStorage.setItem('lng', lng);
   };
 
   return (
