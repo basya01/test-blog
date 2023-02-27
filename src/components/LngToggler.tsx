@@ -12,13 +12,13 @@ export const LngToggler = () => {
   const { i18n } = useTranslation();
   const isEng = i18n.language === Langs.ENG;
 
-  const languageHandler = (lng: Langs) => {
+  const togglerHandler = (lng: Langs) => {
     i18n.changeLanguage(lng);
     localStorage.setItem('lng', lng);
   };
 
   return (
-    <Button onClick={() => languageHandler(isEng ? Langs.UK : Langs.ENG)}>
+    <Button onClick={() => togglerHandler(isEng ? Langs.UK : Langs.ENG)}>
       <img src={isEng ? EngIcon : UkIcon} alt={isEng ? 'eng' : 'uk'} width="40px" />
     </Button>
   );

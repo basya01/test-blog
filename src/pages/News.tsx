@@ -1,5 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
-import CircularProgress from '@mui/material/CircularProgress';
+import { Box, Button, Typography, CircularProgress } from '@mui/material';
 import { useEffect } from 'react';
 import { withTranslation } from 'react-i18next';
 import { Post, PostError } from '../components';

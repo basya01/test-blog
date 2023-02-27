@@ -1,9 +1,5 @@
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import blue from '@mui/material/colors/blue';
-import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 

@@ -1,17 +1,15 @@
 import BookIcon from '@mui/icons-material/Book';
 import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
-import { useAppSelector, useAuth } from '../hooks';
+import { Link } from 'react-router-dom';
+import { useAppSelector, useAuth, useTabsNavigation } from '../hooks';
 import { AuthModal, LngToggler, ProfileMenu } from './';
 
 export const Header = () => {
-  const [activeTab, setActiveTab] = useState<number | false>(0);
   const [isOpenAuthModal, setIsOpenAuthModal] = useState(false);
   const userId = useAppSelector((state) => state.auth.id);
-  const { pathname } = useLocation();
   const auth = useAuth();
   const { t } = useTranslation('navigation');
 
@@ -28,14 +26,7 @@ export const Header = () => {
     },
   ];
 
-  useEffect(() => {
-    const isTabExist = tabs.find((tab) => tab.to === pathname);
-    if (!isTabExist) {
-      setActiveTab(false);
-      return;
-    }
-    setActiveTab(isTabExist.id);
-  }, [pathname]);
+  const activeTab = useTabsNavigation(tabs);
 
   const onSubmitAuth = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

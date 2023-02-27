@@ -1,6 +1,4 @@
-import { Box, Card, CircularProgress } from '@mui/material';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { Box, Card, CircularProgress, Button, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
