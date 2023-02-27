@@ -22,16 +22,9 @@ const resources = {
   },
 };
 
-
-const lng = localStorage.getItem('lng') || 'en';
 i18n.use(initReactI18next).init({
   resources,
-  lng,
-  react: {
-    bindI18n: 'loaded languageChanged',
-    bindI18nStore: 'added',
-    useSuspense: true,
-  },
+  lng: localStorage.getItem('lng') || 'en',
   interpolation: {
     escapeValue: false,
   },

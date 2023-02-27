@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import React from 'react';
 import { TransitionGroup } from 'react-transition-group';
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { Severity } from '../models';
 import { deleteAlert } from '../store/slices/alerts';
 

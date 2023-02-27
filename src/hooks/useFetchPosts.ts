@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { fetchPosts } from '../store/slices/posts';
-import { useAppDispatch } from './redux';
+import { useAppDispatch } from './';
 
 export const useFetchPosts = (limit: number) => {
   const [start, setStart] = useState(0);

@@ -3,7 +3,7 @@ import { Box, Button, Menu, MenuItem } from '@mui/material';
 import React, { MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../hooks/redux';
+import { useAppDispatch } from '../hooks';
 import { addAlert } from '../store/slices/alerts';
 import { logout } from '../store/slices/auth';
 

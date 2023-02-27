@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { Navigate } from 'react-router-dom';
 import avatar from '../assets/profile_avatar.jpg';
-import { useAppSelector } from '../hooks/redux';
+import { useAppSelector } from '../hooks';
 
 export const Profile = () => {
   const userId = useAppSelector((state) => state.auth.id);

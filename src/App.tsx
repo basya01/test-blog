@@ -1,6 +1,5 @@
 import { Container, ThemeProvider } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import { Alerts, Header } from './components';
 import { Main, News, Profile } from './pages';
 import { theme } from './theme';

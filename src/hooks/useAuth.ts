@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { addAlert } from '../store/slices/alerts';
 import { login as loginUser } from '../store/slices/auth';
-import { useAppDispatch, useAppSelector } from './redux';
+import { useAppDispatch, useAppSelector } from './';
 
 export const useAuth = () => {
   const users = useAppSelector((state) => state.users);

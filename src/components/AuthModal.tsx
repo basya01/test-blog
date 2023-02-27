@@ -5,7 +5,7 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { useTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 interface AuthModalProps {
   open: boolean;
