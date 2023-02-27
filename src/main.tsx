@@ -13,7 +13,7 @@ import '@fontsource/roboto/700.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename="/test-blog">
       <App />
     </BrowserRouter>
   </Provider>
