@@ -3,8 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect } from 'react';
 import { withTranslation } from 'react-i18next';
 import { Post, PostError } from '../components';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { useFetchPosts } from '../hooks/useFetchPosts';
+import { useAppDispatch, useAppSelector, useFetchPosts } from '../hooks';
 import { clearPosts, Status } from '../store/slices/posts';
 
 export const News = withTranslation('news')(({ t }) => {

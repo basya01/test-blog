@@ -4,8 +4,7 @@ import { Box, Container } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import { useAppSelector } from '../hooks';
-import { useAuth } from '../hooks/useAuth';
+import { useAppSelector, useAuth } from '../hooks';
 import { AuthModal, LngToggler, ProfileMenu } from './';
 
 export const Header = () => {
