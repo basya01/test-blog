@@ -50,7 +50,7 @@ export const Header = () => {
     <>
       <AppBar color="secondary" position="static">
         <Container maxWidth="xl">
-          <Toolbar variant="dense" disableGutters>
+          <Toolbar variant="dense" disableGutters component="nav">
             <BookIcon color="primary" sx={{ mr: 1 }} />
             <Typography
               variant="h6"
